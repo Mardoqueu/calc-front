@@ -14,6 +14,24 @@ import MuiCard from "@mui/material/Card";
 
 import { styled } from "@mui/material/styles";
 
+/**
+ * A styled component based on MuiCard, customized with theme-specific styles.
+ *
+ * The Card is designed to be center-aligned with a flexible layout and adjusts its
+ * width and shadow based on the screen size and color mode.
+ *
+ * The component includes the following styles:
+ * - Flexbox layout with vertical column direction
+ * - Center-aligned horizontally
+ * - Full width within its container
+ * - Padding and gap defined by the theme spacing
+ * - Centered margin
+ * - A multi-layered, subtle shadow
+ * - Specific width when on small screens or larger, defined by theme breakpoints
+ * - Different shadow styling for dark mode, applied according to theme settings
+ *
+ * @type {StyledComponent<'div', Theme>}
+ */
 const Card = styled(MuiCard)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
@@ -33,6 +51,18 @@ const Card = styled(MuiCard)(({ theme }) => ({
   }),
 }));
 
+/**
+ * SignUpContainer is a styled component utilizing the Stack component from Material-UI.
+ * It is designed to handle the layout and styling of a sign-up form or related container section.
+ *
+ * The styles dynamically adjust based on the given theme and breakpoints for responsive design.
+ *
+ * Properties:
+ * - height: Calculated based on a CSS variable `--template-frame-height` and viewport height.
+ * - minHeight: Ensures a minimum height of 100%.
+ * - padding: Responsive padding that changes from `theme.spacing(2)` to `theme.spacing(4)` at "sm" breakpoints and up.
+ * - Background: Uses a radial gradient as a background image, with styles varying for light and dark modes.
+ */
 const SignUpContainer = styled(Stack)(({ theme }) => ({
   height: "calc((1 - var(--template-frame-height, 0)) * 100dvh)",
   minHeight: "100%",
@@ -56,6 +86,13 @@ const SignUpContainer = styled(Stack)(({ theme }) => ({
   },
 }));
 
+/**
+ * This component renders a signup form with fields for username and password.
+ * It includes validation for the inputs. Submitting the form will attempt to
+ * create a new user and navigate to the home page on success.
+ *
+ * @return {JSX.Element} The rendered signup form component.
+ */
 export function SignUp() {
   const [userNameError, setUserNameError] = useState(false);
   const [userNameErrorMessage, setUserNameErrorMessage] = useState("");

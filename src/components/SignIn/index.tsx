@@ -17,6 +17,23 @@ import { toast } from "react-toastify";
 
 import { styled } from "@mui/material/styles";
 
+/**
+ * Styled component based on MuiCard with additional custom styling.
+ *
+ * The `Card` component is designed with a flexible and centered layout along
+ * with responsive support for different screen sizes. It incorporates padding
+ * and spacing adjustments according to the theme's spacing scale.
+ *
+ * Notable style properties include:
+ * - Flexbox layout with a column direction.
+ * - Centered alignment and 100% width.
+ * - Padding and gap values derived from the theme's spacing.
+ * - Responsive max-width for small and larger screens.
+ * - Custom box shadow with variations for light and dark themes.
+ *
+ * This styling uses the provided theme's breakpoints and supports applying
+ * additional styles for different theme modes.
+ */
 const Card = styled(MuiCard)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
@@ -36,6 +53,19 @@ const Card = styled(MuiCard)(({ theme }) => ({
   }),
 }));
 
+/**
+ * SignInContainer is a styled container component for the sign-in page.
+ * It utilizes the `Stack` component from Material-UI and applies various
+ * styling properties based on the theme and breakpoints.
+ *
+ * - Dynamically calculates height based on template frame height.
+ * - Ensures a minimum height of 100%.
+ * - Applies padding based on the theme spacing.
+ * - Includes responsive padding adjustments for up to "sm" breakpoints.
+ * - Uses a pseudo-element (::before) to add a background image with
+ *   a radial gradient effect.
+ * - Supports dark mode styling for the background image gradient.
+ */
 const SignInContainer = styled(Stack)(({ theme }) => ({
   height: "calc((1 - var(--template-frame-height, 0)) * 100dvh)",
   minHeight: "100%",
@@ -59,6 +89,15 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
   },
 }));
 
+/**
+ * The SignIn component provides a user interface for signing into the application.
+ * It manages the form state, input validation, and submission process.
+ * The component utilizes React hooks, React Router for navigation, and a custom authentication context.
+ *
+ * @return A React component that renders the sign-in form, including fields for username and password,
+ * input validation messages, and a submit button. The form handles form submission asynchronously,
+ * performs authentication, navigates to the main application upon success, and displays error messages if any issue occurs during authentication.
+ */
 export function SignIn() {
   const [userNameError, setUserNameError] = useState(false);
   const [emailErrorMessage, setEmailErrorMessage] = useState("");

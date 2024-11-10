@@ -7,10 +7,36 @@ import { CalculatorProps } from "../../interfaces/CalculatorProps";
 export const Calculator = ({ onInputChange }: CalculatorProps) => {
   const [input, setInput] = useState<string>("0");
 
+  /**
+   * Event handler function to handle click events.
+   *
+   * This function updates the input value based on the clicked value.
+   * If the current input is "0", it replaces it with the new value.
+   * Otherwise, it appends the new value to the existing input.
+   *
+   * @param {string} value - The value to be added to the input.
+   */
   const handleClick = (value: string) => {
     setInput((prevInput) => (prevInput === "0" ? value : prevInput + value));
   };
 
+  /**
+   * handleEqual is an asynchronous function that processes a mathematical input string,
+   * replaces any square root notation with a corresponding function, and sends the
+   * processed input to a server for calculation. The resulting response updates the input
+   * state and triggers a change event.
+   *
+   * The function performs the following steps:
+   * 1. Retrieves the user ID from local storage.
+   * 2. If the user ID is not found, it displays an error message.
+   * 3. Replaces square root notation (√) in the input string with the corresponding
+   *    function format (sqrt()).
+   * 4. Sends the processed input to a server function `calculateOperation` for calculation.
+   * 5. Updates the input state and calls the `onInputChange` function with the server response.
+   * 6. Catches any errors and sets the input state to "0" upon failure.
+   *
+   * @throws {Error} Throws an error if the user ID is missing from local storage.
+   */
   const handleEqual = async () => {
     try {
       const userId = localStorage.getItem("userId");
@@ -31,6 +57,12 @@ export const Calculator = ({ onInputChange }: CalculatorProps) => {
     }
   };
 
+  /**
+   * Resets the input value to its default state.
+   *
+   * This function sets the input to "0", and if an error occurs during this process,
+   * it sets the input to "Error".
+   */
   const handleClear = () => {
     try {
       setInput("0");

@@ -4,6 +4,16 @@ import { Calculator } from "../components/Calculator";
 import { useNavigate } from "react-router-dom";
 import { currentBalance, generateRandomString } from "../services/api";
 
+/**
+ * Renders the HomePage component, which includes a balance display, a calculator,
+ * and an option to generate a random string.
+ *
+ * The component fetches the current balance on initial render and updates it
+ * whenever the `randomString` or `inputValue` state changes. It also allows
+ * users to navigate to the home page and logout.
+ *
+ * @return {JSX.Element} The JSX for the HomePage component
+ */
 export function HomePage() {
   const navigate = useNavigate();
   const [currentBalanceValue, setCurrentBalanceValue] = useState(0);

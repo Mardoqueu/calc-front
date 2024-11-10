@@ -3,6 +3,14 @@ import { toast } from "react-toastify";
 
 const API_URL = "https://gateway-api-d161ff47e128.herokuapp.com";
 
+/**
+ * Creates a new user by sending a POST request to the registration endpoint.
+ *
+ * @param {Object} user - The user data.
+ * @param {string} user.userName - The username of the new user.
+ * @param {string} user.password - The password for the new user.
+ * @return {Promise<void>} A promise that resolves when the user is successfully created, or rejects with an error message.
+ */
 export async function createUser({ userName, password }: UserProps) {
   try {
     const user = {
@@ -34,6 +42,14 @@ export async function createUser({ userName, password }: UserProps) {
   }
 }
 
+/**
+ * Logs in a user with the provided credentials.
+ *
+ * @param {Object} params - Object containing user login credentials.
+ * @param {string} params.userName - The username of the user.
+ * @param {string} params.password - The password of the user.
+ * @return {Object|undefined} The user data if login is successful, or undefined if an error occurs.
+ */
 export async function login({ userName, password }: UserProps) {
   try {
     const user = {
@@ -63,6 +79,13 @@ export async function login({ userName, password }: UserProps) {
   }
 }
 
+/**
+ * Executes a specified operation for a given user.
+ *
+ * @param {number} userId - The unique identifier of the user.
+ * @param {string} operation - The operation expression to be calculated.
+ * @return {Promise<object>} A promise that resolves with the operation result or rejects with an error message.
+ */
 export async function calculateOperation(userId: number, operation: string) {
   try {
     const operations = {
@@ -104,6 +127,16 @@ export async function calculateOperation(userId: number, operation: string) {
   }
 }
 
+/**
+ * Generates a random string for the authenticated user.
+ * This function retrieves the user token and user ID from localStorage,
+ * and makes a POST request to the API to generate the random string.
+ * If the request is successful, the random string is returned.
+ * Otherwise, an error message is displayed.
+ *
+ * @return {Promise<string|undefined>} A promise that resolves to the randomly generated string if successful,
+ * or undefined if an error occurs.
+ */
 export async function generateRandomString() {
   try {
     const userToken = localStorage.getItem("userToken");
