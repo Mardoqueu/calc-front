@@ -1,7 +1,7 @@
 import { UserProps } from "../interfaces/UserProps";
 import { toast } from "react-toastify";
 
-const API_URL = "http://localhost:8080";
+const API_URL = "https://gateway-api-d161ff47e128.herokuapp.com/";
 
 export async function createUser({ userName, password }: UserProps) {
   try {
