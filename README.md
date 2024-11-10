@@ -43,5 +43,5 @@ This repository contains the front-end part of the calculator application.
    npm run dev
    ```
 
-5. **Access the application:** Open your web browser and navigate to the URL provided by the terminal, typically `http://localhost:3000` or similar.
+5. **Access the application:** Open your web browser and navigate to the URL provided by the terminal.
 
